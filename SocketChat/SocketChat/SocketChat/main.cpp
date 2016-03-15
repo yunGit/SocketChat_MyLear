@@ -1,14 +1,23 @@
+//
+//  main.cpp
+//  SocketChat
+//
+//  Created by 曹国运 on 16/3/15.
+//  Copyright © 2016年 曹国运. All rights reserved.
+//
+
 #include <iostream>
 
 using namespace std;
 
-int main(void)
-{
-	cout<<"hello world!"<<endl;
-	
-	// Wait Input
-	cin.get();
-	cin.get();
-	// end
-	return 0;
+int main(int argc, const char * argv[]) {
+    // insert code here...
+    std::cout << "Hello, World!\n";
+    
+    // Wait
+    cin.get();
+    cin.get();
+    
+    // End
+    return 0;
 }
