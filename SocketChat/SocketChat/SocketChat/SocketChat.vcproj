@@ -188,6 +188,18 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="Chat"
+				>
+				<File
+					RelativePath=".\Chat\Chat_yun.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Chat\Chat_yun.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -196,6 +208,14 @@
 			>
 			<File
 				RelativePath=".\Def.h"
+				>
+			</File>
+			<File
+				RelativePath=".\KProtocol.h"
+				>
+			</File>
+			<File
+				RelativePath=".\KProtocolDef.h"
 				>
 			</File>
 			<File
