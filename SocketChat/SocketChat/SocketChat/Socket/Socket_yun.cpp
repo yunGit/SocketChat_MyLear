@@ -8,17 +8,21 @@
 
 #include "Socket_yun.hpp"
 
+#ifdef __PLATFORM_WIN32__
+#include <winsock2.h>
+#endif
+
 namespace YUN {
     // Socket C++
     
-    Socket CreateSocket(void)
+    SOCKET CreateSocket(void)
     {
-        Socket s = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+        SOCKET s = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
         
         return s;
     }
     
-    Socket BindSocket(Socket s, string strIp, short siPort)
+    SOCKET BindSocket(SOCKET s, string strIp, short siPort)
     {
         SOCKADDR_IN addr;
         addr.sin_family = AF_INET;

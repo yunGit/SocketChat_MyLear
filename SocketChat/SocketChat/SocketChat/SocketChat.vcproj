@@ -40,6 +40,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/wd4430"
 				Optimization="0"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
@@ -60,6 +61,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalOptions="ws2_32.lib"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -174,12 +176,28 @@
 				RelativePath=".\main.cpp"
 				>
 			</File>
+			<Filter
+				Name="Socket"
+				>
+				<File
+					RelativePath=".\Socket\Socket_yun.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Socket\Socket_yun.hpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<File
+				RelativePath=".\Platform.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"

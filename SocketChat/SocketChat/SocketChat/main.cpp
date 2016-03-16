@@ -7,7 +7,8 @@
 //
 
 #include <iostream>
-#include "Socket_yun.hpp"
+#include "Platform.h"
+#include "Socket/Socket_yun.hpp"
 
 using namespace std;
 
