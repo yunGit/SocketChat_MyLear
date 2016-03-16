@@ -27,6 +27,7 @@
 typedef sockaddr*	LPSOCKADDR;
 typedef sockaddr_in SOCKADDR_IN;
 typedef int			SOCKET;
+typedef LPSOCKADDR    SOCKADDR;
 #endif
 
 // -------  Win32  ------------

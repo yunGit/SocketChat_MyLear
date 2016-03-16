@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "Def.h"
-#include "Socket/Socket_yun.hpp"
+#include "../Socket/Socket_yun.hpp"
 
 using namespace std;
 
@@ -25,7 +25,7 @@ namespace YUN
 		BOOL		ConnectReady();
 		BOOL		ChatMsg(const char* buf, int nLen);
 		BOOL		ListenMsg(const char* buf, int nLen);
-		void		ShowMsg(const char* buf, int nLen, string* strUserName);
+		void		ShowMsg(const char* buf, int nLen, string strUserName);
 		BOOL		BreakConnect();
 
 		const char* GetMyName();

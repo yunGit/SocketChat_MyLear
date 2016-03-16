@@ -24,6 +24,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AE1083451C99A75200092BB6 /* Chat */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Chat; sourceTree = SOURCE_ROOT; };
+		AE1083461C99A76E00092BB6 /* Def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Def.h; sourceTree = SOURCE_ROOT; };
+		AE1083471C99A76E00092BB6 /* KProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KProtocol.h; sourceTree = SOURCE_ROOT; };
+		AE1083481C99A76E00092BB6 /* KProtocolDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KProtocolDef.h; sourceTree = SOURCE_ROOT; };
+		AE1083491C99A76E00092BB6 /* Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = SOURCE_ROOT; };
 		AE46974C1C9857E3000C1DCB /* SocketChat */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SocketChat; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE4697561C98585C000C1DCB /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
 		AE46975A1C98597A000C1DCB /* Socket_yun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Socket_yun.cpp; path = Socket/Socket_yun.cpp; sourceTree = SOURCE_ROOT; };
@@ -60,6 +65,11 @@
 		AE46974E1C9857E3000C1DCB /* SocketChat */ = {
 			isa = PBXGroup;
 			children = (
+				AE1083461C99A76E00092BB6 /* Def.h */,
+				AE1083471C99A76E00092BB6 /* KProtocol.h */,
+				AE1083481C99A76E00092BB6 /* KProtocolDef.h */,
+				AE1083491C99A76E00092BB6 /* Platform.h */,
+				AE1083451C99A75200092BB6 /* Chat */,
 				AE4697581C9858EA000C1DCB /* Socket */,
 				AE4697561C98585C000C1DCB /* main.cpp */,
 			);
@@ -164,10 +174,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = MacOSX;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -204,6 +211,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = MacOSX;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

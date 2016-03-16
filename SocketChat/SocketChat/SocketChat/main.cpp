@@ -94,7 +94,7 @@ int main(int argc, const char * argv[]) {
 	int iIsSer;
 	do 
 	{
-		cin<<iIsSer;
+		cin>>iIsSer;
 		if (1 == iIsSer)
 		{
 			// 服务器
@@ -140,7 +140,7 @@ int main(int argc, const char * argv[]) {
 			
 	}
 
-	cout<<"聊天结束！"
+	cout<<"聊天结束！";
 
     // Wait
     cin.get();

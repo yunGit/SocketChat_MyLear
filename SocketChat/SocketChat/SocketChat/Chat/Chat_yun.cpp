@@ -106,7 +106,7 @@ namespace YUN
 		}
 		return enum_chat_ok;
 	}
-	void		Chat_yun::ShowMsg(const char* buf, int nLen, string* strUserName)
+	void		Chat_yun::ShowMsg(const char* buf, int nLen, string strUserName)
 	{
 		cout<<endl;
 		cout<<strUserName<<" said:"<<endl;

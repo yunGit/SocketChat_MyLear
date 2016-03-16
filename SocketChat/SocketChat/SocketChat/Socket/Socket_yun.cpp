@@ -65,7 +65,12 @@ namespace YUN {
 	{
 		SOCKADDR_IN addr;
 		addr.sin_family = AF_INET;
-		addr.sin_addr.S_un.S_addr = HTONL(lIp);	
+#ifdef __PLATFORM_WIN32__
+		addr.sin_addr.S_un.S_addr = HTONL(lIp);
+#endif
+#ifdef __PLATFORM_MAC__
+        addr.sin_addr.s_addr = HTONL(lIp);
+#endif
 		addr.sin_port = HTONS(siPort);
 
 		int ret = bind(s, (LPSOCKADDR)&addr, sizeof(addr));
@@ -100,7 +105,7 @@ namespace YUN {
 
 		// 为一个链接提供服务
 		// addrClient 包含了发出连接请求的客户机IP地址信息
-		int ret = connect(s, (SOCKADDR*)&addrClt, nLen);
+		int ret = connect(s, *(SOCKADDR*)&addrClt, nLen);
 		if (enum_socket_error == ret)
 		{
 			cout<<"connect error"<<endl;
