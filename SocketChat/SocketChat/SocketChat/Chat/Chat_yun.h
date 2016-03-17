@@ -2,7 +2,7 @@
 #define CHAT_YUN_H_
 
 #include <iostream>
-#include "Def.h"
+#include "../Def.h"
 #include "../Socket/Socket_yun.hpp"
 
 using namespace std;
@@ -24,16 +24,16 @@ namespace YUN
 		BOOL		SetAsClient();
 		BOOL		ConnectReady();
 		BOOL		ChatMsg(const char* buf, int nLen);
-		BOOL		ListenMsg(const char* buf, int nLen);
+		BOOL		ListenMsg(char* buf, int nLen);
 		void		ShowMsg(const char* buf, int nLen, string strUserName);
-		BOOL		BreakConnect();
+		void		BreakConnect();
 
 		const char* GetMyName();
 		const char* GetOtherName();
 
 	private:
 		void		CleanAll();
-		bool		IsInfoValid(USER_INFO& info);
+		bool		IsInfoValid(const USER_INFO& info);
 
 	public:
 		Chat_yun();

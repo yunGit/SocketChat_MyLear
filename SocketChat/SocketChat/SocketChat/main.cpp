@@ -22,10 +22,10 @@ int main(int argc, const char * argv[]) {
 	USER_INFO mine, his;
 
 
-	cout<<"你好，欢迎聊天！"<<endl;
+	cout<<"Hello , welcome to Chat!"<<endl;
 
 	{
-		cout<<"请输入本地IP（点分十进制）:"<<endl;
+		cout<<"Please input your IP Address(decimal with dot):"<<endl;
 
 		string strMyAddr;
 		//do 
@@ -35,11 +35,11 @@ int main(int argc, const char * argv[]) {
 		//		cout<<"输入错误，请重新输入！"<<endl;
 		//} while (strMyAddr.empty());
 
-		cout<<"请输入本地端口："<<endl;
+		cout<<"Input your port:"<<endl;
 		short siMyPort;
 		cin>>siMyPort;
 
-		cout<<"请输入您的网名："<<endl;
+		cout<<"Input your screen name:"<<endl;
 		string strMyName;
 		//do 
 		//{
@@ -55,7 +55,7 @@ int main(int argc, const char * argv[]) {
 	}
 
 	{
-		cout<<"请输入对方IP（点分十进制）:"<<endl;
+		cout<<"Please input Other IP Address(decimal with dot):"<<endl;
 
 		string strHisAddr;
 		//do 
@@ -65,11 +65,11 @@ int main(int argc, const char * argv[]) {
 		//		cout<<"输入错误，请重新输入！"<<endl;
 		//} while (strHisAddr.empty());
 
-		cout<<"请输入对方端口："<<endl;
+		cout<<"Input his port:"<<endl;
 		short siHisPort;
 		cin>>siHisPort;
 
-		cout<<"请输入他的网名："<<endl;
+		cout<<"Input his screen name:"<<endl;
 		string strHisName;
 		//do 
 		//{
@@ -88,34 +88,45 @@ int main(int argc, const char * argv[]) {
 	ChatObj.SetOtherInfo(his);
 	ChatObj.InitConnect();
 	
-	cout<<"您来作为服务器？"<<endl;
-	cout<<"1	是"<<endl;
-	cout<<"0	否"<<endl;
+	cout<<"Are you Server?"<<endl;
+	cout<<"1	Yes"<<endl;
+	cout<<"0	No"<<endl;
 	int iIsSer;
 	do 
 	{
+		cout<<"Into Set server"<<endl;
 		cin>>iIsSer;
 		if (1 == iIsSer)
 		{
 			// 服务器
 			ChatObj.SetAsServer();
-			cout<<"开始监听！"<<endl;
-			if (enum_chat_error != ChatObj.ConnectReady())
-			{
-				cout<<"连接成功，开始聊天！"<<endl;
-			}
+			cout<<"Begin Listen!"<<endl;
+
 		}else if (0 == iIsSer)
 		{
 			// 客户端
 			ChatObj.SetAsClient();
-			cout<<"开始连接！"<<endl;
+			cout<<"Begin Connect!"<<endl;
 			ChatObj.ConnectReady();
 		}else
 		{
-			cout<<"输入错误，重新输入！"<<endl;
+			cout<<"Input error, Please again!"<<endl;
 		}
 	} while (iIsSer != 1 && iIsSer != 0);
 
+	// While accept in server
+	cout<<"now, next is server connect"<<endl;
+	int retAccept = enum_chat_error;
+	while(1 == iIsSer && (retAccept != enum_chat_ok))
+	{
+		retAccept = ChatObj.ConnectReady();
+	}
+	if (enum_chat_error != retAccept && (iIsSer == 1))
+	{
+		cout<<"Connect Success, Chat!"<<endl;
+	}
+
+	cout<<"next is chat"<<endl;
 	// Chat Begin
 	while(1)
 	{
@@ -124,7 +135,7 @@ int main(int argc, const char * argv[]) {
 		cin.getline(bufSend, 50);
 		if (string(bufSend) == "stopChat")
 			break;
-		else
+		else if (!string(bufSend).empty())
 		{
 			ChatObj.ChatMsg(bufSend, 50);
 			ChatObj.ShowMsg(bufSend, 50, ChatObj.GetMyName());
@@ -140,7 +151,7 @@ int main(int argc, const char * argv[]) {
 			
 	}
 
-	cout<<"聊天结束！";
+	cout<<"Chat end!";
 
     // Wait
     cin.get();

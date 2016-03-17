@@ -105,14 +105,15 @@ namespace YUN {
 
 		// 为一个链接提供服务
 		// addrClient 包含了发出连接请求的客户机IP地址信息
-		int ret = connect(s, *(SOCKADDR*)&addrClt, nLen);
-		if (enum_socket_error == ret)
-		{
-			cout<<"connect error"<<endl;
-			CloseSocket(s);
+		connect(s, (SOCKADDR*)&addrClt, nLen);
+		//int ret = connect(s, (SOCKADDR*)&addrClt, nLen);
+		//if (enum_socket_error == ret)
+		//{
+		//	cout<<"connect error"<<endl;
+		//	CloseSocket(s);
 
-			return enum_socket_error;
-		}
+		//	return enum_socket_error;
+		//}
 		return enum_socket_success;
 	}
 
@@ -154,13 +155,13 @@ namespace YUN {
 	int RecvBuffToSocket(SOCKET s, char* strBuf, int nLen, int nFlag)
 	{
 		int ret = recv(s, strBuf, nLen, nFlag);
-		if (enum_socket_error == ret)
-		{
-			cout<<"recv error"<<endl;
-			CloseSocket(s);
+		//if (enum_socket_error == ret)
+		//{
+		//	cout<<"recv error"<<endl;
+		//	CloseSocket(s);
 
-			return enum_socket_success;
-		}
+		//	return enum_socket_success;
+		//}
 		return ret;
 	}
 

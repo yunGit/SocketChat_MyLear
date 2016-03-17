@@ -35,17 +35,18 @@ namespace YUN
 			cout<<"Chat, InitConnect Create error!"<<endl;
 			return enum_chat_error;
 		}
-		if (enum_socket_error == BindSocket(m_SelfS, m_OtherInfo.siPort, m_OtherInfo.strAddr))
-		{
-			cout<<"Chat, InitConnect Bind error!"<<endl;
-			return enum_chat_error;
-		}
 		return enum_chat_ok;
 	}
 	BOOL		Chat_yun::SetAsServer()
 	{
 		if (!IsInfoValid(m_OtherInfo))
 			return enum_chat_error;
+
+		if (enum_socket_error == BindSocket(m_SelfS, m_SelfInfo.siPort, m_SelfInfo.strAddr))
+		{
+			cout<<"Chat, InitConnect Bind error!"<<endl;
+			return enum_chat_error;
+		}
 
 		if (enum_socket_error == ListenSocket(m_SelfS, 5))
 		{
@@ -71,10 +72,13 @@ namespace YUN
 			if (enum_socket_error == AcceptSocket(m_SelfS, m_OtherS, addrClient))
 				return enum_chat_error;	
 			else
-				ChatMsg("连接成功，开始聊天");
+				ChatMsg("Connect Success, Begin Chat!", 10);
 		}else
 		{
 			SOCKADDR_IN addrClient;
+			addrClient.sin_addr.S_un.S_addr = inet_addr(m_OtherInfo.strAddr.c_str());
+			addrClient.sin_family			= AF_INET;
+			addrClient.sin_port				= HTONS(m_OtherInfo.siPort);
 			if (enum_socket_error == ConnectSocket(m_SelfS, addrClient))
 				return enum_chat_error;		
 		}
@@ -91,10 +95,10 @@ namespace YUN
 		}
 		return enum_chat_ok;
 	}
-	BOOL		Chat_yun::ListenMsg(const char* buf, int nLen)
+	BOOL		Chat_yun::ListenMsg(char* buf, int nLen)
 	{
 		SOCKET tmpSocket = m_bIsServer ? m_OtherS : m_SelfS;
-		int ret = RecvBuffToSocket(tmpSocket, buf, nLen);
+		int ret = RecvBuffToSocket(tmpSocket, buf, nLen, 0);
 		if (enum_socket_error == ret)
 		{
 			cout<<"Listen Buff Error!"<<endl;
@@ -109,10 +113,10 @@ namespace YUN
 	void		Chat_yun::ShowMsg(const char* buf, int nLen, string strUserName)
 	{
 		cout<<endl;
-		cout<<strUserName<<" said:"<<endl;
+		cout<<strUserName.c_str()<<" said:"<<endl;
 		cout<<buf<<endl;
 	}
-	BOOL		Chat_yun::BreakConnect()
+	void		Chat_yun::BreakConnect()
 	{
 		CloseSocket(m_SelfS);
 		CleanSocket();
@@ -141,7 +145,7 @@ namespace YUN
 		m_bIsServer = false;
 	}
 
-	bool Chat_yun::IsInfoValid(USER_INFO& info)
+	bool Chat_yun::IsInfoValid(const USER_INFO& info)
 	{
 		return (!info.strAddr.empty() && info.siPort != 0 && !info.strUserName.empty());
 	}

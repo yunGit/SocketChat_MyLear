@@ -46,7 +46,7 @@ typedef LPSOCKADDR    SOCKADDR;
 #endif
 // ----------------------------
 
-#define SOCKET_ERROR	-1
+//#define SOCKET_ERROR	-1
 
 using namespace std;
 
@@ -80,7 +80,7 @@ namespace YUN {
 
 	// Recv Buff from Socket
 	// return is size of copy or SOCKET_ERROR
-	int RecvBuffToSocket(SOCKET s, const char* strBuf, int nLen, int nFlag = 0);
+	int RecvBuffToSocket(SOCKET s, char* strBuf, int nLen, int nFlag = 0);
 
 	// Close Socket
 	void CloseSocket(SOCKET s);
