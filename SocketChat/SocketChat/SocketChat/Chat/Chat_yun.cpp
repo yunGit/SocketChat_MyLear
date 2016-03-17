@@ -96,7 +96,7 @@ namespace YUN
 			cout<<"Send Buff Error!"<<endl;
 			return enum_chat_error;
 		}
-		return enum_chat_ok;
+		return ret;
 	}
 	BOOL		Chat_yun::ListenMsg(char* buf, int nLen)
 	{
@@ -121,7 +121,7 @@ namespace YUN
 		{
 			cout<<buf[i];
 		}
-		cout<<endl;
+		cout<<endl<<endl;
 	}
 	void		Chat_yun::BreakConnect()
 	{

@@ -39,6 +39,13 @@ namespace YUN {
 			cout<<"socket init error"<<endl;
 			return enum_socket_error;
 		}
+
+		
+		int nNetTimeout = 10000;	// 1s
+		// 设置接收超时时间
+		setsockopt(s, SOL_SOCKET, SO_RCVTIMEO, (char*)&nNetTimeout, sizeof(int));
+		//// 设置发送超时时间
+		//setsockopt(s, SOL_SOCKET, SO_SNDBUF, (char*)&nNetTimeout, sizeof(int));
         
         return enum_socket_success;
     }
@@ -157,8 +164,9 @@ namespace YUN {
 		int ret = recv(s, strBuf, nLen, nFlag);
 		if (enum_socket_error == ret)
 		{
-			cout<<"recv error"<<endl;
-			CloseSocket(s);
+			//cout<<"recv error"<<endl;
+			//CloseSocket(s);
+			// upper by noted for when recv is timeout can continue socket
 
 			return enum_socket_error;
 		}

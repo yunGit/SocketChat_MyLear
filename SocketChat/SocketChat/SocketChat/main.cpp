@@ -28,12 +28,7 @@ int main(int argc, const char * argv[]) {
 		cout<<"Please input your IP Address(decimal with dot):"<<endl;
 
 		string strMyAddr;
-		//do 
-		//{
-			cin>>strMyAddr;
-		//	if (strMyAddr.empty())
-		//		cout<<"输入错误，请重新输入！"<<endl;
-		//} while (strMyAddr.empty());
+		cin>>strMyAddr;
 
 		cout<<"Input your port:"<<endl;
 		short siMyPort;
@@ -41,12 +36,7 @@ int main(int argc, const char * argv[]) {
 
 		cout<<"Input your screen name:"<<endl;
 		string strMyName;
-		//do 
-		//{
-			cin>>strMyName;
-		//	if (strMyName.empty())
-		//		cout<<"输入错误，请重新输入！"<<endl;
-		//} while (strMyName.empty());
+		cin>>strMyName;
 
 		mine.siPort = siMyPort;
 		mine.strAddr = strMyAddr;
@@ -58,12 +48,7 @@ int main(int argc, const char * argv[]) {
 		cout<<"Please input Other IP Address(decimal with dot):"<<endl;
 
 		string strHisAddr;
-		//do 
-		//{
-			cin>>strHisAddr;
-		//	if (strHisAddr.empty())
-		//		cout<<"输入错误，请重新输入！"<<endl;
-		//} while (strHisAddr.empty());
+		cin>>strHisAddr;
 
 		cout<<"Input his port:"<<endl;
 		short siHisPort;
@@ -71,12 +56,7 @@ int main(int argc, const char * argv[]) {
 
 		cout<<"Input his screen name:"<<endl;
 		string strHisName;
-		//do 
-		//{
-			cin>>strHisName;
-		//	if (strHisName.empty())
-		//		cout<<"输入错误，请重新输入！"<<endl;
-		//} while (strHisName.empty());
+		cin>>strHisName;
 
 		his.siPort = siHisPort;
 		his.strAddr = strHisAddr;
@@ -97,13 +77,13 @@ int main(int argc, const char * argv[]) {
 		cin>>iIsSer;
 		if (1 == iIsSer)
 		{
-			// 服务器
+			// Server
 			ChatObj.SetAsServer();
 			cout<<"Begin Listen!"<<endl;
 
 		}else if (0 == iIsSer)
 		{
-			// 客户端
+			// Client
 			ChatObj.SetAsClient();
 			cout<<"Begin Connect!"<<endl;
 			ChatObj.ConnectReady();
@@ -127,7 +107,6 @@ int main(int argc, const char * argv[]) {
 		char bufSend[50];
 		memset(bufSend, 0, 50);
 		cin.getline(bufSend, 50);
-		//cin>>bufSend;
 		if (string(bufSend) == "stopChat")
 			break;
 		else if (!string(bufSend).empty())
