@@ -94,7 +94,6 @@ int main(int argc, const char * argv[]) {
 	int iIsSer;
 	do 
 	{
-		cout<<"Into Set server"<<endl;
 		cin>>iIsSer;
 		if (1 == iIsSer)
 		{
@@ -115,40 +114,36 @@ int main(int argc, const char * argv[]) {
 	} while (iIsSer != 1 && iIsSer != 0);
 
 	// While accept in server
-	cout<<"now, next is server connect"<<endl;
 	int retAccept = enum_chat_error;
 	while(1 == iIsSer && (retAccept != enum_chat_ok))
 	{
 		retAccept = ChatObj.ConnectReady();
 	}
-	if (enum_chat_error != retAccept && (iIsSer == 1))
-	{
-		cout<<"Connect Success, Chat!"<<endl;
-	}
 
-	cout<<"next is chat"<<endl;
+
 	// Chat Begin
 	while(1)
 	{
 		char bufSend[50];
 		memset(bufSend, 0, 50);
 		cin.getline(bufSend, 50);
+		//cin>>bufSend;
 		if (string(bufSend) == "stopChat")
 			break;
 		else if (!string(bufSend).empty())
 		{
-			ChatObj.ChatMsg(bufSend, 50);
-			ChatObj.ShowMsg(bufSend, 50, ChatObj.GetMyName());
+			int nLen = string(bufSend).length();
+			ChatObj.ChatMsg(bufSend, nLen);
+			ChatObj.ShowMsg(bufSend, nLen, ChatObj.GetMyName());
 		}
 
 		char bufRecv[50];
 		memset(bufRecv, 0, 50);
-		int nRecvRet = ChatObj.ListenMsg(bufRecv, 50);
+		int nRecvRet = ChatObj.ListenMsg(bufRecv, sizeof(bufRecv));
 		if (enum_chat_error == nRecvRet)
 			continue;
 		else
 			ChatObj.ShowMsg(bufRecv, nRecvRet, ChatObj.GetOtherName());
-			
 	}
 
 	cout<<"Chat end!";

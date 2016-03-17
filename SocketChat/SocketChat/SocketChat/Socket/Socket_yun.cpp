@@ -155,13 +155,13 @@ namespace YUN {
 	int RecvBuffToSocket(SOCKET s, char* strBuf, int nLen, int nFlag)
 	{
 		int ret = recv(s, strBuf, nLen, nFlag);
-		//if (enum_socket_error == ret)
-		//{
-		//	cout<<"recv error"<<endl;
-		//	CloseSocket(s);
+		if (enum_socket_error == ret)
+		{
+			cout<<"recv error"<<endl;
+			CloseSocket(s);
 
-		//	return enum_socket_success;
-		//}
+			return enum_socket_error;
+		}
 		return ret;
 	}
 

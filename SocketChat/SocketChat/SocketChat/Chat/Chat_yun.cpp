@@ -72,7 +72,10 @@ namespace YUN
 			if (enum_socket_error == AcceptSocket(m_SelfS, m_OtherS, addrClient))
 				return enum_chat_error;	
 			else
-				ChatMsg("Connect Success, Begin Chat!", 10);
+			{
+				string strS("Connect Success, Begin Chat!");
+				ChatMsg(strS.c_str(), strS.length());
+			}
 		}else
 		{
 			SOCKADDR_IN addrClient;
@@ -108,13 +111,17 @@ namespace YUN
 		{
 			return enum_chat_error;
 		}
-		return enum_chat_ok;
+		return ret;
 	}
 	void		Chat_yun::ShowMsg(const char* buf, int nLen, string strUserName)
 	{
 		cout<<endl;
 		cout<<strUserName.c_str()<<" said:"<<endl;
-		cout<<buf<<endl;
+		for (int i = 0; i < nLen; ++i)
+		{
+			cout<<buf[i];
+		}
+		cout<<endl;
 	}
 	void		Chat_yun::BreakConnect()
 	{
