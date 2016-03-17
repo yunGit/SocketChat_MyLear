@@ -46,6 +46,8 @@ typedef LPSOCKADDR    SOCKADDR;
 #endif
 // ----------------------------
 
+#define dMAX_CLIENT		5
+
 //#define SOCKET_ERROR	-1
 
 using namespace std;
@@ -73,6 +75,16 @@ namespace YUN {
 
 	// Accept Socket - for Server
 	SOCKET_RESAULT AcceptSocket(SOCKET s, SOCKET& sBindConnect, SOCKADDR_IN &addrClt);
+
+#ifdef __PLATFORM_WIN32__
+	// Resert Socket READ&WRITE&EXC Set - Server
+	void ResetSocketSelectSet(SOCKET& s);
+
+	// Select Socket Buff - Server
+	// param is SOCKET_SELECT_TYPE
+	SOCKET_RESAULT SelectSocketBuff(SOCKET &s, int nSelectType);
+#endif
+
 
 	// Send Buff to Socket
 	// return is size of copy or SOCKET_ERROR

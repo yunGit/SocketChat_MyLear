@@ -143,6 +143,66 @@ namespace YUN {
 		return enum_socket_success;
 	}
 
+#ifdef __PLATFORM_WIN32__
+	// Resert Socket READ&WRITE&EXC Set - Server
+	void ResetSocketSelectSet(SOCKET& s)
+	{
+		// 通过 select 函数，适当时候使用 accept 、 send 、 recv 等函数
+		// read_set : 为了确定有没有可 recv() 数据而使用
+		// write_set : 为了确定能不能使用 send() 而使用
+		// exc_set : 为了例外处而使用
+		fd_set read_set, write_set, exc_set;
+
+
+		// 各个fd_set值初始化成NULL
+		FD_ZERO(&read_set);
+		FD_ZERO(&write_set);
+		FD_ZERO(&exc_set);
+
+		// s 是经过 socket() -> bind()->listen()函数，准备好接收客户连接请求的套接字
+		// 给客户端套接字设置 read_set、write_set、exc_set 等三个值。
+		// 通过这一操作，使 select 函数能获取对应套接字中要检测出的信号。
+		FD_SET(s, &read_set);
+		FD_SET(s, &write_set);
+		FD_SET(s, &exc_set);				
+	}
+
+	// Select Socket Buff - server
+	SOCKET_RESAULT SelectSocketBuff(SOCKET &s, int nSelectType)
+	{
+		// 通过 select 函数，适当时候使用 accept 、 send 、 recv 等函数
+		// read_set : 为了确定有没有可 recv() 数据而使用
+		// write_set : 为了确定能不能使用 send() 而使用
+		// exc_set : 为了例外处而使用
+		fd_set read_set, write_set, exc_set;
+		struct timeval	tv;	// 时间点
+
+		// 为了当没有任何信号时跳过去，设置所有的成员为0
+		// tv_sec 是以 s 为单位的时间，而 tv_usec是ms为单位的时间
+		tv.tv_sec = 0;
+		tv.tv_usec = 0;
+
+		// 使用 select() 函数
+		if (select(s + 1, &read_set, &write_set, &exc_set, &tv) == SOCKET_ERROR)
+			return enum_socket_error;
+		
+		SOCKET_RESAULT ret;
+		switch(nSelectType)
+		{
+		case enum_select_read:
+			ret = (FD_ISSET(s, &read_set)) ? enum_socket_true : enum_socket_false;
+		case enum_select_write:
+			ret = (FD_ISSET(s, &write_set)) ? enum_socket_true : enum_socket_false;
+		case enum_select_exc:
+			ret = (FD_ISSET(s, &exc_set)) ? enum_socket_true : enum_socket_false;
+		}
+		
+		
+	}
+#endif
+
+
+
 	// Send Buff to Socket
 	int SendBuffToSocket(SOCKET s, const char* strBuf, int nLen, int nFlag)
 	{
