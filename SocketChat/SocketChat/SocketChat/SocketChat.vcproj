@@ -200,6 +200,54 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="Utils"
+				>
+				<File
+					RelativePath=".\Utils\utils.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Utils\utils.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Packet"
+				>
+				<File
+					RelativePath=".\Packet\Packet.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Packet\Packet.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Message"
+				>
+				<File
+					RelativePath=".\Message\message.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Message\message.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Network"
+				>
+				<File
+					RelativePath=".\Network\network.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Network\network.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -219,7 +267,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\linked_list.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Platform.h"
+				>
+			</File>
+			<File
+				RelativePath=".\structs.h"
 				>
 			</File>
 		</Filter>
