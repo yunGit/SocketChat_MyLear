@@ -59,7 +59,8 @@ namespace YUN {
 	void InitSocket();
     
     // Create Socket
-    SOCKET_RESAULT CreateSocket(SOCKET &s);
+	// ProtocolType 是协议类型，TCP / UDP
+    SOCKET_RESAULT CreateSocket(SOCKET &s, int ProtocolType = IPPROTO_TCP);
     
     // Bind Socket
 	// INADDR_ANY -> 0.0.0.0

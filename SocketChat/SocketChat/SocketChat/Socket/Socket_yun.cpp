@@ -31,9 +31,9 @@ namespace YUN {
 	}
     
 	// Create Socket
-    SOCKET_RESAULT CreateSocket(SOCKET &s)
+    SOCKET_RESAULT CreateSocket(SOCKET &s, int ProtocolType)
     {
-        s = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);	// 0
+        s = socket(AF_INET, SOCK_STREAM, ProtocolType);	// 0
 		if (enum_socket_error == s)
 		{
 			cout<<"socket init error"<<endl;

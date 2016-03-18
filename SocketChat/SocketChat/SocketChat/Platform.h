@@ -9,9 +9,7 @@ typedef unsigned long	DWORD;
 typedef int				BOOL;
 typedef float			FLOAT;
 
-#endif
-
-#ifdef MacOSX
+#else
 
 #define __PLATFORM_MAC__
 
