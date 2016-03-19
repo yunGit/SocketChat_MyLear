@@ -177,30 +177,6 @@
 				>
 			</File>
 			<Filter
-				Name="Socket"
-				>
-				<File
-					RelativePath=".\Socket\Socket_yun.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Socket\Socket_yun.hpp"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="Chat"
-				>
-				<File
-					RelativePath=".\Chat\Chat_yun.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Chat\Chat_yun.h"
-					>
-				</File>
-			</Filter>
-			<Filter
 				Name="Utils"
 				>
 				<File
@@ -256,14 +232,6 @@
 			>
 			<File
 				RelativePath=".\Def.h"
-				>
-			</File>
-			<File
-				RelativePath=".\KProtocol.h"
-				>
-			</File>
-			<File
-				RelativePath=".\KProtocolDef.h"
 				>
 			</File>
 			<File

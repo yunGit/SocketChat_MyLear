@@ -60,6 +60,8 @@ typedef struct
 #include <mmsystem.h>
 #include <stdio.h>
 #include <time.h>
+
+#pragma comment(lib, "winmm.lib")
 //#include <inaddr.h>
 //#include "resource.h"
 

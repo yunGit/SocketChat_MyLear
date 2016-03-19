@@ -11,6 +11,7 @@
 #include "Platform.h"
 #include "Chat/Chat_yun.h"
 
+#include "Def.h"
 #include "structs.h"
 #include "linked_list.h"
 #include "Network\network.h"

@@ -92,7 +92,8 @@ namespace YUN
 
 		sa.sin_family = PF_INET;
 		sa.sin_port = htons(port);
-		sa.sin_addr.S_addr = INADDR_ANY;
+		//sa.sin_addr.S_addr = INADDR_ANY;
+		sa.sin_addr.S_un.S_addr = INADDR_ANY;
 
 		// 绑定
 		if (bind(sock, (struct sockaddr *)&sa, sizeof(sa)) < 0)
@@ -163,7 +164,7 @@ namespace YUN
 		newClient->m_next = NULL;
 
 		// 链表连接
-		INSERT_TO_LIST(g_ClientList, newClient, newClient->m_prev, m_next);
+		INSERT_TO_LIST(g_ClientList, newClient, m_prev, m_next);
 		++g_ClientList;
 
 		log("Accept New Connection: %d [%s]\r\n", newDesc, newClient->m_Ip);
