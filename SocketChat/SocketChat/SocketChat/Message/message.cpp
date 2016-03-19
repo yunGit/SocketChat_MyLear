@@ -4,6 +4,6 @@
 	处理接收的数据包函数
 */
 
-#include "Def.h"
-#include "structs.h"
-#include "network.h"
+#include "..\Def.h"
+#include "..\structs.h"
+#include "..\Network\network.h"

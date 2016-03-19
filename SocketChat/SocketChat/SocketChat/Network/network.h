@@ -6,7 +6,7 @@
 
 	套接字处理函数头
 */
-#include "Platform.h"
+#include "..\Platform.h"
 
 namespace YUN
 {

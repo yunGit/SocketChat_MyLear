@@ -4,7 +4,7 @@
 	数据包处理函数
 */
 
-#include "Def.h"
+#include "..\Def.h"
 #include "Packet.h"
 
 namespace YUN

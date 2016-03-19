@@ -4,7 +4,7 @@
 	各种有用的函数
 */
 
-#include "Def.h"
+#include "..\Def.h"
 #include <stdarg.h>
 
 namespace YUN

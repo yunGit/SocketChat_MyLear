@@ -56,10 +56,11 @@ typedef struct
 #ifdef __PLATFORM_WIN32__
 
 #include <windows.h>
-#include <WinSock.h>
+#include <winsock.h>
 #include <mmsystem.h>
 #include <stdio.h>
 #include <time.h>
+//#include <inaddr.h>
 //#include "resource.h"
 
 #else

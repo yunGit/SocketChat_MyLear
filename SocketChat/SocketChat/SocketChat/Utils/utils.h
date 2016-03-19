@@ -10,7 +10,7 @@
 /*
 	日志的画面输出和文件记录函数
 */
-#include "Platform.h"
+#include "..\Platform.h"
 
 #ifndef __PLATFORM_WIN32__
 #include <sys/time.h>
